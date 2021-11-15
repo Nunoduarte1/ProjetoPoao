@@ -13,6 +13,7 @@ public class Alimentares extends Produtos{
     private int calorias;
     private int percentagemGordura;
 
+    
     /**
      * connstroi um objeto do tipo alimentares que possui as caracteristicas de um objeto tipo produto
      * @param calorias numero inteiro que contem o numero de calorias por cada 100g(se este valor for menor que zero é imprimida mensagem de erro e o valor e colocado igual -1)
@@ -29,7 +30,7 @@ public class Alimentares extends Produtos{
         setPercentagemGordura(percentagemGordura);
     }
     
-
+    
     public int getCalorias() {
         return calorias;
     }
