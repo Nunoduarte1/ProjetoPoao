@@ -24,7 +24,7 @@ public class Alimentares extends Produtos{
  * @param stock numero inteiro com a quantidade do produto disponivel na loja (se este valor for menor que zero é imprimida mensagem de erro e o valor e colocado igual -1)
 
      */
-    public Alimentares(int calorias, int percentagemGordura, int identificador, String nome, int precoUnitario, int stock) {
+    public Alimentares(int calorias, int percentagemGordura, int identificador, String nome, float precoUnitario, int stock) {
         super(identificador, nome, precoUnitario, stock); 
         setCalorias(calorias);
         setPercentagemGordura(percentagemGordura);
