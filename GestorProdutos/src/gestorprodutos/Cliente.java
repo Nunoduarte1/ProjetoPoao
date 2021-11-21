@@ -1,18 +1,18 @@
-public class Cliente {
+public abstract class Cliente {
     private String nome;
     private String morada;
     private String email;
     private String telefone;
     private String dataDeNascimento;
-    private boolean clienteFrequente;
+    
 
-    public Cliente(String nome, String morada, String email, String telefone, String dataDeNascimento, boolean clienteFrequente) {
-        this.nome = nome;
-        this.morada = morada;
-        this.email = email;
-        this.telefone = telefone;
-        this.dataDeNascimento = dataDeNascimento;
-        this.clienteFrequente = clienteFrequente;
+    public Cliente(String nome, String morada, String email, String telefone, String dataDeNascimento) {
+        setDataDeNascimento(dataDeNascimento);
+        setEmail(email);
+        setMorada(morada);
+        setNome(nome);
+        setTelefone(telefone);
+        
     }
 
     public String getNome() {
@@ -54,14 +54,16 @@ public class Cliente {
     public void setDataDeNascimento(String dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
-
-    public boolean isClienteFrequente() {
-        return clienteFrequente;
-    }
-
-    public void setClienteFrequente(boolean clienteFrequente) {
-        this.clienteFrequente = clienteFrequente;
-    }
+/**
+ * calcula o preço combrado pela transporte das compras ao domicilio
+ * se o cliente for frequente nao paga transporte para compras superiores a 40 euros, se forem inferiores paga 15 euros
+ * se o cliente for normal paga 20 euros do transporte 
+ *  o cliente paga 10 euros adicionais por cada movel com peso superior a 15kg(numMoveisComPesoSuperior) 
+ * @param numMoveisComPesoSuperior numero de moveis com peso superior a 15kg 
+ * @param despesa preço dos artigos presentes no carrinho de compras em euros
+ * @return custo do transporte ao domicilio em euros
+ */
+   public abstract int calculaPrecoViagem(int numMoveisComPesoSuperior,float despesa);
 
     @Override
     public String toString() {
@@ -71,7 +73,6 @@ public class Cliente {
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", dataDeNascimento='" + dataDeNascimento + '\'' +
-                ", clienteFrequente=" + clienteFrequente +
                 '}';
     }
 }
