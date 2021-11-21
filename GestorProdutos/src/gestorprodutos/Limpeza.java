@@ -19,7 +19,7 @@ public class Limpeza extends Produtos{
  * @param precoUnitario numero inteiro com o preco da unidade do produto(se este valor for menor que zero é imprimida mensagem de erro e o valor e colocado igual -1)
  * @param stock numero inteiro com a quantidade do produto disponivel na loja (se este valor for menor que zero é imprimida mensagem de erro e o valor e colocado igual -1)
      */
-    public Limpeza(int toxicidade, int identificador, String nome, int precoUnitario, int stock) {
+    public Limpeza(int toxicidade, int identificador, String nome, float precoUnitario, int stock) {
         super(identificador, nome, precoUnitario, stock);
         setToxicidade(toxicidade);
     }
