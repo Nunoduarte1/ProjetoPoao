@@ -22,7 +22,7 @@ public class Mobiliario extends Produtos{
  * @param stock numero inteiro com a quantidade do produto disponivel na loja (se este valor for menor que zero é imprimida mensagem de erro e o valor e colocado igual -1)
 
  */
-    public Mobiliario(int peso, int dimensao, int identificador, String nome, int precoUnitario, int stock) {
+    public Mobiliario(int peso, int dimensao, int identificador, String nome, float precoUnitario, int stock) {
         super(identificador, nome, precoUnitario, stock);
         setDimensao(dimensao);
         setPeso(peso);
