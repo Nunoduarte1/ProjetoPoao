@@ -1,14 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package exercava3;
-
 /**
  * object type Data has a day a month and a year if any of this numbers doesn't
  * make sense(for exemple the day number is greater then 31) will be store 0
  *
- * @author emanuel
+ * 
  */
 public class Data {
 
@@ -16,7 +10,7 @@ public class Data {
     private int mes;
     private int ano;
 
-    public Data(int dia, int mes, int ano) {
+    public Data(int dia, int mes, int ano) throws Exception {
         setDia(dia);
         setMes(mes);
         setAno(ano);
@@ -70,12 +64,11 @@ public class Data {
      *
      * @param mes interger value of the month
      */
-    public void setMes(int mes) {
+    public void setMes(int mes) throws Exception {
         if (mes > 0 && mes <= 12) {
             this.mes = mes;
-        } else {//if the month is a invalid number will be store 0 in atribute month
-            System.out.println("mes invalido");
-            this.mes = 0;
+        } else {//if the month is a invalid number will be store 0 in atribute month   
+            throw new Exception("valor de mes invalido");
         }
     }
 
@@ -95,53 +88,59 @@ public class Data {
     }
     
      /**
-     * check if date D is between the request date and the devolution date
+     * 
+     * ve se a data d esta entre a data antes e a data depois
      *
      * @param d object type Data, date to check
-     * @param devolucao object type Data,devolution date
-     * @param requesicao object type Data, request date
+     * @param antes object type Data,data que antecede
+     * @param depois object type Data, data que sucede
      * @return true if the date D is in between the devolution and the request
      * date
      */
-//    private boolean checkData(Data d, Data devolucao, Data requesicao) {// esta func nao pertencia mas penso que possa dar jeito foi de um dos meus trabalhos antigos
-//        int dia = d.getDia();
-//        int mes = d.getMes();//values from date d
-//        int ano = d.getAno();
-//
-//        int diar = requesicao.getDia();
-//        int mesr = requesicao.getMes();//values from request date
-//        int anor = requesicao.getAno();
-//
-//        int diad = devolucao.getDia();
-//        int mesd = devolucao.getMes();//values from devolution date
-//        int anod = devolucao.getAno();
-//
-////check if the date D is in between the request date and the  devolution date if not return false
-//        if (ano < anor || ano > anod) {
-//            return false;
-//        } else {
-//            if (ano == anor) {
-//                if (mes < mesr) {
-//                    return false;
-//                } else if (mes == mesr) {
-//                    if (dia < diar) {
-//                        return false;
-//                    }
-//                }
-//            }
-//            if (ano == anod) {
-//                if (mes > mesd) {
-//                    return false;
-//                } else if (mes == mesd) {
-//                    if (dia > diad) {
-//                        return false;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return true;//date d is between the request date and the devolution date
-//    }
+    public boolean checkData(Data d, Data antes, Data depois) {// esta func nao pertencia mas penso que possa dar jeito foi de um dos meus trabalhos antigos
+        int dia = d.getDia();
+        int mes = d.getMes();//values from date d
+        int ano = d.getAno();
+
+        int diar = antes.getDia();
+        int mesr = antes.getMes();//values from request date
+        int anor = antes.getAno();
+
+        int diad = depois.getDia();
+        int mesd = depois.getMes();//values from devolution date
+        int anod = depois.getAno();
+
+//check if the date D is in between the request date and the  devolution date if not return false
+        if (ano < anor || ano > anod) {
+            return false;
+        } else {
+            if (ano == anor) {
+                if (mes < mesr) {
+                    return false;
+                } else if (mes == mesr) {
+                    if (dia < diar) {
+                        return false;
+                    }
+                }
+            }
+            if (ano == anod) {
+                if (mes > mesd) {
+                    return false;
+                } else if (mes == mesd) {
+                    if (dia > diad) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;//date d is between the antes date and the depois date
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" + "dia=" + dia + ", mes=" + mes + ", ano=" + ano + '}';
+    }
     
     
     
