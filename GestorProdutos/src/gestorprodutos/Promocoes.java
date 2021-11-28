@@ -1,18 +1,26 @@
+/**
+ * 
+ * gera uma promocao que tem data de inicio e fim
+ */
 public abstract class  Promocoes {
-    private String dataInicio;
-    private String dataFim;
+    private Data dataInicio;
+    private Data dataFim;
     
-
-    public Promocoes(String dataInicio, String dataFim) {
+/**
+ * 
+ * @param dataInicio data em que a promocao comeca a ser aplicada
+ * @param dataFim data em que a promocao deixa de ser aplicada 
+ */
+    public Promocoes(Data dataInicio, Data dataFim) {
         setDataFim(dataFim);
         setDataInicio(dataInicio);
     }
 
-    public void setDataInicio(String dataInicio) {
+    public void setDataInicio(Data dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public void setDataFim(String dataFim) {
+    public void setDataFim(Data dataFim) {
         this.dataFim = dataFim;
     }
 
@@ -25,6 +33,16 @@ public abstract class  Promocoes {
      * @return valor a ser pago pela quantidade do produto com o desconto incluido
      */
     public abstract float calculaCustoComPromocao(int quantidade, float precoUnitario);
+    
+    /**
+     * verifica se a promocao esta a ser aplicada na data atual, ou seja se a data atua esta entre a data de inicio da promocao e a data final da promoca
+     * @param atual data atual
+     * @return true se a promocao estiver a ser aplicada, false se a promocao nao esta a ser aplicada
+     */
+    public boolean descontoValido(Data atual){
+        boolean descontoVali=atual.checkData(atual, dataInicio, dataFim);
+        return descontoVali;
+    }
     @Override
     public String toString() {
         return "Promocoes{" + "dataInicio=" + dataInicio + ", dataFim=" + dataFim + '}';
