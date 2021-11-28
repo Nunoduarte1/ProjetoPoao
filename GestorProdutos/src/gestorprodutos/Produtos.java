@@ -1,21 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package gestordecompras;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 /**
- *Objeto produto tem um identificador, um nome, um preco por unidade,o seu stock, uma promocao associada(pode ser null se nao tiver nenhuma promocao), dimencao para distinguir mobilia dos restantes(nos restantes filhos dimensao=-1)
- * se existir um erro no valor do stock ou no preco unitario(ex serem negativos) serÃ¡ imprimida mensagem de erro e sera armazenado o valor -1 no atributo
+ *Objeto produto tem um identificador, um nome, um preco por unidade,o seu stock, um array de promocoes associada(pode ser null se nao tiver nenhuma promocao)
+ * se existir um erro no valor do stock ou no preco unitario(ex serem negativos) gera InputMismatchException
+ * o identificador tem 5 digitos, o digito da esquerda se 1->mobilia, 2-> limpeza,3-> comida qualquer outro digito a esquerda gera InputMismatchException
  * 
  */
 public abstract class Produtos {
-    private int identificador;
+    private int identificador;// !! tem pelomenos 5 digitos o digito da esquerda se 1->mobilia, 2-> limpeza,3-> comida
     private String nome;
     private float precoUnitario;
     private int stock;
-    private Promocoes promocao;
-    private int dimensao;
+    private ArrayList<Promocoes> promocao;
+
  
     /**
      * 
@@ -24,32 +22,26 @@ public abstract class Produtos {
  * @param nome string com o nome do produto
  * @param precoUnitario  preco da unidade do produto(se este valor for menor que zero Ã© imprimida mensagem de erro e o valor e colocado igual -1) valor em euros
  * @param stock numero inteiro com a quantidade do produto disponivel na loja (se este valor for menor que zero Ã© imprimida mensagem de erro e o valor e colocado igual -1)
-     * @param promocao objeto do tipo promocao que indica qual a promocao a que o produto pode estar sujeito(pode ser null se nao tiver nenhuma promocao)
+     * @param promocao array de promocoes que indica quais as promocoes a que o produto pode estar sujeito(pode ser null se nao tiver nenhuma promocao)
      */
-    public Produtos(int identificador, String nome, float precoUnitario, int stock, Promocoes promocao) {
-        setIdentificador(identificador);
+    public Produtos(int identificador, String nome, float precoUnitario, int stock,ArrayList<Promocoes> promocao) throws InputMismatchException{
+        setIdentificador(identificador); //5 1-> moveis 2-> alimento 3-> limpeza /10000
+        
         setNome(nome);
         setPrecoUnitario(precoUnitario);
         setStock(stock);
         setPromocao(promocao);
+      
        
     }
-    public Promocoes getPromocao() {
-        return promocao;
-    }
 
-    public int getDimensao() {
-        return dimensao;
-    }
-
-    public void setPromocao(Promocoes promocao) {
+    public void setPromocao(ArrayList<Promocoes> promocao) {
         this.promocao = promocao;
     }
 
-    public void setDimensao(int dimensao) {
-        this.dimensao = dimensao;
+    public ArrayList<Promocoes> getPromocao() {
+        return promocao;
     }
-    
     
 
     public int getIdentificador() {
@@ -68,7 +60,10 @@ public abstract class Produtos {
         return stock;
     }
 
-    public void setIdentificador(int identificador) {
+    public void setIdentificador(int identificador) throws InputMismatchException{
+        if (identificador/10000>3 || identificador/10000<1) {// identificador tem 5 digitos, o digito da esquerda se for 1-> movel, 2-> alimento,3->limpeza
+            throw new InputMismatchException("valor do identificador invalido");
+        }
         this.identificador = identificador;
     }
 
@@ -76,19 +71,17 @@ public abstract class Produtos {
         this.nome = nome;
     }
 
-    public void setPrecoUnitario(float precoUnitario) {
+    public void setPrecoUnitario(float precoUnitario)throws InputMismatchException {// estas verificaçoes iram ser feitas usando excessoes 
         if(precoUnitario<=0){
-            System.out.println("Preco unitario invalido!");
-            this.precoUnitario=-1;
+            throw new InputMismatchException("valor do preco unitario invalido");
         }else{
         this.precoUnitario = precoUnitario;
         }
     }
 
-    public void setStock(int stock) {
+    public void setStock(int stock)throws InputMismatchException {
         if (stock<0) {
-            System.out.println("Valor de stock invÃ¡lido!");
-            this.stock=-1;
+            throw new InputMismatchException("valor do stock invalido");
         }else{
         this.stock = stock;
         }
@@ -96,7 +89,7 @@ public abstract class Produtos {
 
     @Override
     public String toString() {
-        return "Produtos{" + "identificador=" + identificador + ", nome=" + nome + ", precoUnitario=" + precoUnitario + ", stock=" + stock + ", promocao=" + promocao + ", dimensao=" + dimensao + '}';
+        return "Produtos{" + "identificador=" + identificador + ", nome=" + nome + ", precoUnitario=" + precoUnitario + ", stock=" + stock + ", promocao=" + promocao + '}';
     }
 
 
