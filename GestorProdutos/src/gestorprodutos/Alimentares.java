@@ -32,7 +32,7 @@ public class Alimentares extends Produtos{
      * o produto pode estar sujeito(pode ser null se nao tiver nenhuma promocao)
      *
      */
-    public Alimentares(int calorias, int percentagemGordura, int identificador, String nome, float precoUnitario, int stock, ArrayList<Promocoes> promocao) throws InputMismatchException {
+    public Alimentares(int identificador,int calorias, int percentagemGordura,  String nome, float precoUnitario, int stock, ArrayList<Promocoes> promocao) throws InputMismatchException {
         super(identificador, nome, precoUnitario, stock, promocao);        
         setCalorias(calorias);
         setPercentagemGordura(percentagemGordura);
