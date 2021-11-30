@@ -1,7 +1,7 @@
 public class PagueTres extends Promocoes{
 
-    public PagueTres(String dataInicio, String dataFim) {
-        super(dataInicio, dataFim);
+    public PagueTres(int identifica,Data dataInicio, Data dataFim) {
+        super(identifica,dataInicio, dataFim);
     }
     /**
      * calcula o preco a pagar pela quantidade do produto a que esta associada e devolve esse valor
@@ -25,8 +25,4 @@ public class PagueTres extends Promocoes{
     public String toString() {
         return super.toString()+"PagueTres{" + '}';
     }
-
-
-    
-}
 
