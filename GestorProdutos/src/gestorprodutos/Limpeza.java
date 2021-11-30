@@ -19,7 +19,7 @@ public class Limpeza extends Produtos{
  
      */
   
-    public Limpeza(int toxicidade, int identificador, String nome, float precoUnitario, int stock, ArrayList<Promocoes> promocao) throws InputMismatchException {
+    public Limpeza( int identificador,int toxicidade, String nome, float precoUnitario, int stock, ArrayList<Promocoes> promocao) throws InputMismatchException {
         super(identificador, nome, precoUnitario, stock, promocao);
 
         
