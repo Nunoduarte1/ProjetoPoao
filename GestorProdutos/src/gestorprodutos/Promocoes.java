@@ -1,19 +1,39 @@
 /**
  * 
  * gera uma promocao que tem data de inicio e fim
+ *  o identifica serve para ao criar os produtos saber quais as promocoes que lhe estao associadas
  */
 public abstract class  Promocoes {
     private Data dataInicio;
     private Data dataFim;
+    private int identifica;
     
 /**
  * 
  * @param dataInicio data em que a promocao comeca a ser aplicada
  * @param dataFim data em que a promocao deixa de ser aplicada 
  */
-    public Promocoes(Data dataInicio, Data dataFim) {
+    public Promocoes(int identifica,Data dataInicio, Data dataFim) {
         setDataFim(dataFim);
         setDataInicio(dataInicio);
+        setIdentifica(identifica);
+        
+    }
+
+    public Data getDataInicio() {
+        return dataInicio;
+    }
+
+    public Data getDataFim() {
+        return dataFim;
+    }
+
+    public int getIdentifica() {
+        return identifica;
+    }
+
+    public void setIdentifica(int identifica) {
+        this.identifica = identifica;
     }
 
     public void setDataInicio(Data dataInicio) {
@@ -49,4 +69,3 @@ public abstract class  Promocoes {
     }
     
 }
-
